@@ -1,8 +1,15 @@
 package com.innocuoussymmetry.recipin.models;
 
+import javax.persistence.Column;
+import javax.persistence.Table;
+
+@Table(name="friendships")
 public class Friendship extends DBEntity {
+    @Column(name="senderid")
     private Integer senderId;
+    @Column(name="targetid")
     private Integer targetId;
+    @Column(name="pending")
 
     private boolean pending;
 
