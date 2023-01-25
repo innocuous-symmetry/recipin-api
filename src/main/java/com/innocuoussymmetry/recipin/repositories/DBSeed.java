@@ -1,21 +1,10 @@
 package com.innocuoussymmetry.recipin.repositories;
 
-import org.hibernate.cfg.Environment;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.stereotype.Component;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.sql.*;
-import java.awt.EventQueue;
-import java.util.stream.Stream;
 
-@Configuration
-@PropertySource("classpath:/resources/app.properties")
 public class DBSeed {
     private String constring;
     private Connection conn;

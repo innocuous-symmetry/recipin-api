@@ -2,8 +2,11 @@ package com.innocuoussymmetry.recipin.models;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+import java.util.Map;
+
 @Entity
-@Table(name="users")
+@Table(name="appusers")
 public class User {
     @Id
     @Column(name="id")
@@ -11,10 +14,10 @@ public class User {
     private Integer id;
 
     @Column(name="firstname")
-    private String firstName;
+    private String firstname;
 
     @Column(name="lastname")
-    private String lastName;
+    private String lastname;
 
     @Column(name="handle")
     private String handle;
@@ -23,25 +26,63 @@ public class User {
     private String email;
 
     @Column(name="isadmin")
-    private boolean isAdmin;
+    private Boolean isadmin;
 
     @Column(name="password")
     private String password;
 
+    @Column(name="active")
+    private Boolean active;
+
+    @Column(name="datecreated")
+    private Date datecreated;
+
+    @Column(name="datemodified")
+    private Date datemodified;
+
+    public User() {
+        this.datecreated = new Date();
+        this.datemodified = new Date();
+    }
+
+    public User(Map<String, String> user) {
+        this.firstname = user.get("firstname");
+        this.lastname = user.get("lastname");
+        this.email = user.get("email");
+        this.handle = user.get("handle");
+        this.isadmin = Boolean.getBoolean(user.get("isadmin"));
+        this.password = user.get("password");
+        this.active = Boolean.getBoolean(user.get("active"));
+        this.datecreated = (user.get("datecreated") != null) ? new Date(user.get("datecreated")) : new Date();
+        this.datemodified = (user.get("datemodified") != null) ? new Date(user.get("datemodified")) : new Date();
+    }
+
+    public User(String firstname, String lastname, String email, String handle, Boolean isadmin, String password, Boolean active) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.handle = handle;
+        this.isadmin = isadmin;
+        this.password = password;
+        this.active = active;
+        this.datecreated = new Date();
+        this.datemodified = new Date();
+    }
+
     public String getFirstName() {
-        return firstName;
+        return firstname;
     }
 
     public void setFirstName(String name) {
-        this.firstName = name;
+        this.firstname = name;
     }
 
     public String getLastName() {
-        return lastName;
+        return lastname;
     }
 
     public void setLastName(String name) {
-        this.lastName = name;
+        this.lastname = name;
     }
 
     public String getHandle() {
@@ -60,12 +101,16 @@ public class User {
         this.email = email;
     }
 
+    public boolean getIsActive() { return active; }
+
+    public void setIsActive(boolean active) { this.active = active; }
+
     public boolean getIsAdmin() {
-        return isAdmin;
+        return isadmin;
     }
 
     public void setIsAdmin(boolean isAdmin) {
-        this.isAdmin = isAdmin;
+        this.isadmin = isAdmin;
     }
 
     public String getPassword() {
@@ -74,5 +119,26 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Date getDatecreated() {
+        return datecreated;
+    }
+
+    public void setDatecreated(Date datecreated) {
+        this.datecreated = datecreated;
+    }
+
+    public Date getDatemodified() {
+        return datemodified;
+    }
+
+    public void setDatemodified(Date datemodified) {
+        this.datemodified = datemodified;
+    }
+
+    @Override
+    public String toString() {
+        return "Email: " + this.email + " firstname: " + this.firstname + " lastname: " + this.lastname + " handle: " + this.handle + " password: " + this.password;
     }
 }

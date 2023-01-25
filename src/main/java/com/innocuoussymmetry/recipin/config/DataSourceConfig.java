@@ -1,4 +1,4 @@
-package com.innocuoussymmetry.recipin.repositories;
+package com.innocuoussymmetry.recipin.config;
 
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;

@@ -2,6 +2,8 @@ package com.innocuoussymmetry.recipin.models;
 
 import jakarta.persistence.*;
 import java.util.List;
+
+@Entity
 @Table(name="recipe")
 public class Recipe {
     @Id
@@ -20,9 +22,6 @@ public class Recipe {
 
     @Column(name="description")
     private String description;
-
-    @Column(name="ingredientnames")
-    private List<String> ingredientNames;
 
     public String getName() {
         return this.name;
@@ -54,13 +53,5 @@ public class Recipe {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public List<String> getIngredientNames() {
-        return this.ingredientNames;
-    }
-
-    public void setIngredientNames(List<String> ingredientNames) {
-        this.ingredientNames = ingredientNames;
     }
 }
