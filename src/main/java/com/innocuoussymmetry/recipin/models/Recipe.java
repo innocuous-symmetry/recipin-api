@@ -1,18 +1,26 @@
 package com.innocuoussymmetry.recipin.models;
 
-import javax.persistence.Column;
-import javax.persistence.Table;
+import jakarta.persistence.*;
 import java.util.List;
 @Table(name="recipe")
-public class Recipe extends DBEntity {
+public class Recipe {
+    @Id
+    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
     @Column(name="name")
     private String name;
+
     @Column(name="preptime")
     private String prepTime;
+
     @Column(name="authoruserid")
     private Integer authorUserId;
+
     @Column(name="description")
     private String description;
+
     @Column(name="ingredientnames")
     private List<String> ingredientNames;
 

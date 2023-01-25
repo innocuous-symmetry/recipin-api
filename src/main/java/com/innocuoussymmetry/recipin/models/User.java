@@ -1,19 +1,30 @@
 package com.innocuoussymmetry.recipin.models;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
+@Entity
 @Table(name="users")
-public class User extends DBEntity {
+public class User {
+    @Id
+    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
     @Column(name="firstname")
     private String firstName;
+
     @Column(name="lastname")
     private String lastName;
+
     @Column(name="handle")
     private String handle;
+
     @Column(name="email")
     private String email;
+
     @Column(name="isadmin")
     private boolean isAdmin;
+
     @Column(name="password")
     private String password;
 

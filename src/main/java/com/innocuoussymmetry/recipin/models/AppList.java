@@ -1,6 +1,7 @@
 package com.innocuoussymmetry.recipin.models;
 
-abstract class AppList extends DBEntity {
+abstract class AppList {
+    private Integer id;
     private String name;
     private Integer ownerId;
 

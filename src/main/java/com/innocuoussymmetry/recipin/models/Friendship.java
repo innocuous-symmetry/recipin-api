@@ -1,10 +1,15 @@
 package com.innocuoussymmetry.recipin.models;
 
-import javax.persistence.Column;
-import javax.persistence.Table;
+import jakarta.persistence.*;
 
+@Entity
 @Table(name="friendships")
-public class Friendship extends DBEntity {
+public class Friendship {
+    @Id
+    @Column(name="name")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
     @Column(name="senderid")
     private Integer senderId;
     @Column(name="targetid")

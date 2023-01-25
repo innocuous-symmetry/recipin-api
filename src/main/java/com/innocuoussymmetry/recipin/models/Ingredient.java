@@ -1,10 +1,15 @@
 package com.innocuoussymmetry.recipin.models;
 
-import javax.persistence.Column;
-import javax.persistence.Table;
+import jakarta.persistence.*;
 
+@Entity
 @Table(name="ingredient")
-public class Ingredient extends DBEntity {
+public class Ingredient {
+    @Id
+    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
     @Column(name="name")
     private String name;
     @Column(name="description")
